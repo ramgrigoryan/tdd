@@ -20,3 +20,13 @@ test('red button with initial "Turn to green"',()=>{
 
   expect(colorButton).toHaveTextContent('Turn to red');
 })
+
+test('find checkbox and test is it making button to be disable',()=>{
+  render(<App/>)
+  const checkbox = screen.getByRole('checkbox')
+  const colorButton = screen.getByRole('button',{name:/Turn to/i})
+
+  fireEvent.click(checkbox);
+
+  expect(colorButton).toBeDisabled();
+})
